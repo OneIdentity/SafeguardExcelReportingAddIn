@@ -189,6 +189,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="SafeguardTestImpl.cs" />
     <Compile Include="WpfHost.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -232,6 +233,10 @@
     <ProjectReference Include="..\Common.Ui\Safeguard.Common.Ui.csproj">
       <Project>{CE609869-7885-41C9-AC1D-B66AB0A983D9}</Project>
       <Name>Safeguard.Common.Ui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Safeguard.Common.csproj">
+      <Project>{B935041D-4951-4795-A211-000E7EEBD431}</Project>
+      <Name>Safeguard.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

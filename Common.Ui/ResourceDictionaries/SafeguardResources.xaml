@@ -1,0 +1,127 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:commonUi="clr-namespace:Safeguard.Common.Ui">
+    
+    <commonUi:ToVisibilityConverter x:Key="ToVisibilityConverter"/>
+    <commonUi:ToInverseVisibilityConverter x:Key="ToInverseVisibilityConverter"/>
+
+
+
+    <Color x:Key="WindowBackground">#FFFFFFFF</Color>
+    <Color x:Key="WindowBorderColor">#FF05AADB</Color>
+    <Color x:Key="ChildWindowBackground">#FFF4F4F4</Color>
+    <Color x:Key="PangaeaEntityHeader">#FF69CCE9</Color>
+    <Color x:Key="PangaeaEntityIcon">#FFF1F9FE</Color>
+    <Color x:Key="PangaeaBrightBlue">#FF05AADB</Color>
+    <Color x:Key="PangaeaBlack">#FF000000</Color>
+
+    <Color x:Key="PangaeaRed">#FFB42126</Color>
+    <Color x:Key="PangaeaOrange">#FFEE6411</Color>
+    <Color x:Key="PangaeaYellow">#FFF9B715</Color>
+    <Color x:Key="PangaeaGreen">#FF618F3E</Color>
+    <Color x:Key="PangaeaPurple">#FF802981</Color>
+
+    <Color x:Key="PangaeaLightestBlue">#FFCCE5E9</Color>
+    <Color x:Key="PangaeaLightBlue">#FF69CCE9</Color>
+    <Color x:Key="PangaeaBlueRollover">#FF69CCE9</Color>
+    <Color x:Key="PangaeaBlue">#FF05AADB</Color>
+    <Color x:Key="PangaeaMedBlue">#FF05AADB</Color>
+    <Color x:Key="PangaeaDarkBlue">#FF03556D</Color>
+
+    <Color x:Key="PangaeaWhite">#FFFFFFFF</Color>
+    <Color x:Key="PangaeaLightestGray">#FFE8E8E8</Color>
+    <Color x:Key="PangaeaLightGray">#FFE8E8E8</Color>
+    <Color x:Key="PangaeaButtonBgGray">#FFE8E8E8</Color>
+    <Color x:Key="PangaeaButtonBgMedGray">#FFB7B7B7</Color>
+    <Color x:Key="PangaeaInactiveStateGray">#FFB7B7B7</Color>
+    <Color x:Key="PangaeaInactiveStateMedGray">#FFB7B7B7</Color>
+    <Color x:Key="PangaeaBorderGray">#FFCCCCCC</Color>
+    <Color x:Key="PangaeaGray">#FFB7B7B7</Color>
+    <Color x:Key="PangaeaMedGray">#FF6A6A6A</Color>
+    <Color x:Key="PangaeaAlertingGray">#FF6A6A6A</Color>
+    <Color x:Key="PangaeaGrayPanelDrop">#FF6A6A6A</Color>
+    <Color x:Key="PangaeaDarkGray">#FF2F2F2F</Color>
+    <Color x:Key="PangaeaFrameworkGray">#FF2F2F2F</Color>
+    <Color x:Key="PangaeaDarkestGray">#FF2F2F2F</Color>
+    <Color x:Key="PangaeaAaronGray">#FF888888</Color>
+    <Color x:Key="PangaeaAaronBlueGray">#FF86A7B7</Color>
+
+    <!-- Brushes defined here -->
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{StaticResource WindowBackground}" />
+    <SolidColorBrush x:Key="PangaeaPurpleBrush" Color="{StaticResource PangaeaPurple}" />
+    <SolidColorBrush x:Key="PangaeaRedBrush" Color="{StaticResource PangaeaRed}" />
+    <SolidColorBrush x:Key="PangaeaOrangeBrush" Color="{StaticResource PangaeaOrange}" />
+    <SolidColorBrush x:Key="PangaeaYellowBrush" Color="{StaticResource PangaeaYellow}" />
+    <SolidColorBrush x:Key="PangaeaGreenBrush" Color="{StaticResource PangaeaGreen}" />
+    <SolidColorBrush x:Key="PangaeaDarkBlueBrush" Color="{StaticResource PangaeaDarkBlue}" />
+    <SolidColorBrush x:Key="PangaeaMedBlueBrush" Color="{StaticResource PangaeaMedBlue}" />
+    <SolidColorBrush x:Key="PangaeaBlueBrush" Color="{StaticResource PangaeaBlue}" />
+    <SolidColorBrush x:Key="PangaeaBrightBlueBrush" Color="{StaticResource PangaeaBrightBlue}" />
+    <SolidColorBrush x:Key="PangaeaBlueRolloverBrush" Color="{StaticResource PangaeaBlueRollover}" />
+    <SolidColorBrush x:Key="PangaeaLightBlueBrush" Color="{StaticResource PangaeaLightBlue}" />
+    <SolidColorBrush x:Key="PangaeaLightestBlueBrush" Color="{StaticResource PangaeaLightestBlue}" />
+    <SolidColorBrush x:Key="PangaeaWhiteBrush" Color="{StaticResource PangaeaWhite}" />
+    <SolidColorBrush x:Key="PangaeaBlackBrush" Color="{StaticResource PangaeaBlack}" />
+    <SolidColorBrush x:Key="PangaeaLightGrayBrush" Color="{StaticResource PangaeaLightGray}" />
+    <SolidColorBrush x:Key="PangaeaButtonBgGrayBrush" Color="{StaticResource PangaeaButtonBgGray}" />
+    <SolidColorBrush x:Key="PangaeaButtonBgMedGrayBrush" Color="{StaticResource PangaeaButtonBgMedGray}" />
+    <SolidColorBrush x:Key="PangaeaInactiveStateGrayBrush" Color="{StaticResource PangaeaInactiveStateGray}" />
+    <SolidColorBrush x:Key="PangaeaBorderGrayBrush" Color="{StaticResource PangaeaBorderGray}" />
+    <SolidColorBrush x:Key="PangaeaGrayBrush" Color="{StaticResource PangaeaGray}" />
+    <SolidColorBrush x:Key="PangaeaMedGrayBrush" Color="{StaticResource PangaeaMedGray}" />
+    <SolidColorBrush x:Key="PangaeaAlertingGrayBrush" Color="{StaticResource PangaeaAlertingGray}" />
+    <SolidColorBrush x:Key="PangaeaGrayPanelDropBrush" Color="{StaticResource PangaeaGrayPanelDrop}" />
+    <SolidColorBrush x:Key="PangaeaDarkGrayBrush" Color="{StaticResource PangaeaDarkGray}" />
+    <SolidColorBrush x:Key="PangaeaFrameworkGrayBrush" Color="{StaticResource PangaeaFrameworkGray}" />
+    <SolidColorBrush x:Key="PangaeaFrameworkGray75Brush" Color="{StaticResource PangaeaFrameworkGray}" Opacity=".75" />
+    <SolidColorBrush x:Key="PangaeaDarkestGrayBrush" Color="{StaticResource PangaeaDarkestGray}" />
+    <SolidColorBrush x:Key="PangaeaChildWindowBgBrush" Color="{StaticResource ChildWindowBackground}" />
+    <SolidColorBrush x:Key="PangaeaFlyOverBgBrush" Color="{StaticResource PangaeaBlue}" Opacity=".95" />
+    <SolidColorBrush x:Key="PangaeaBlueRollover30Brush" Color="{StaticResource PangaeaBlueRollover}" Opacity=".30" />
+    <SolidColorBrush x:Key="PangaeaEntityHeaderBrush" Color="{StaticResource PangaeaEntityHeader}" />
+    <SolidColorBrush x:Key="PangaeaEntityIconBrush" Color="{StaticResource PangaeaEntityIcon}" />
+    <SolidColorBrush x:Key="PangaeaFrameworkGray25Brush" Color="{StaticResource PangaeaFrameworkGray}" Opacity=".25" />
+    <SolidColorBrush x:Key="PangaeaGlobal25Brush" Color="{StaticResource PangaeaInactiveStateGray}" Opacity=".25" />
+    <SolidColorBrush x:Key="PangaeaGlobal45Brush" Color="{StaticResource PangaeaInactiveStateGray}" Opacity=".45" />
+    <SolidColorBrush x:Key="PangaeaDarkGray90Brush" Color="{StaticResource PangaeaDarkGray}" Opacity=".9" />
+    <SolidColorBrush x:Key="TransparentBrush" Color="#00000000"/>
+    <SolidColorBrush x:Key="PangaeaAaronGrayBrush" Color="{StaticResource PangaeaAaronGray}"/>
+    <SolidColorBrush x:Key="PangaeaAaronBlueGrayBrush" Color="{StaticResource PangaeaAaronBlueGray}"/>
+    
+    <FontFamily x:Key="DefaultFontFamily">Segoe UI, Lucida Sans Unicode, Verdana</FontFamily>
+    <FontFamily x:Key="ContentFontFamily">Segoe UI, Lucida Sans Unicode, Verdana</FontFamily>
+    <FontFamily x:Key="HeaderFontFamily">Segoe UI Light, Lucida Sans Unicode, Verdana</FontFamily>
+    <FontFamily x:Key="IconFont">/Safeguard.Common.Ui;component/Fonts/#Cadence</FontFamily>
+    <FontFamily x:Key="SegoeUiFont">Segoe UI</FontFamily>
+    <FontFamily x:Key="SegoeUiLightFont">Segoe UI Light</FontFamily>
+    <FontFamily x:Key="SegoeUiSemilightFont">Segoe UI Semilight</FontFamily>
+    <FontFamily x:Key="SegoeUiSemiboldFont">Segoe UI Semibold</FontFamily>
+
+    <DrawingBrush x:Key="SafeguardLogo" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="{StaticResource PangaeaWhiteBrush}" Geometry="F1M329.332,372.458L143.756,372.458 50.968,211.713 143.756,50.968 329.332,50.968 422.12,211.713z M466.227,186.229L373.439,25.484C364.291,9.801,347.628,0,329.332,0L143.756,0C125.46,0,108.797,9.801,99.649,25.484L6.861,186.229C-2.287,201.911,-2.287,221.514,6.861,237.197L99.649,397.942C108.797,413.625,125.46,423.426,143.756,423.426L329.332,423.426C347.628,423.426,364.291,413.625,373.439,397.942L466.227,237.197C475.375,221.514,475.375,201.911,466.227,186.229"/>
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,185.901992797852,180.675"/>
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup.Transform>
+                        <MatrixTransform Matrix="1,0,0,1,143.429,118.272"/>
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="{StaticResource PangaeaWhiteBrush}" Geometry="F1M119.252,55.215L119.252,4.247C110.758,1.96 102.264,0 93.116,0 83.966,0 75.472,1.633 66.978,4.247L66.978,55.215 17.316,39.206C7.188,53.255,0.98,70.244,0,88.54L50.642,104.876 18.296,149.31C28.752,163.359,43.454,174.467,60.116,180.675L92.788,135.588 125.46,180.675C142.122,174.467,156.826,163.359,167.28,149.31L135.262,104.876 185.902,88.54C184.922,70.244,178.716,53.255,168.586,39.206z"/>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    
+    <Style x:Key="PangaeaWhite11AlignLeftText" TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="0,10,0,4" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground" Value="{StaticResource PangaeaWhiteBrush}" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUiFont}" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+    
+    
+</ResourceDictionary>

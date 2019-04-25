@@ -45,7 +45,7 @@ namespace Safeguard.Common.Ui
         }
     }
 
-    public class ToVisibilityConverterInverse : IValueConverter
+    public class ToInverseVisibilityConverter : IValueConverter
     {
         private static ToVisibilityConverter _baseConverter = new ToVisibilityConverter();
 

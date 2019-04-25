@@ -1,0 +1,257 @@
+Home, E002
+Refresh, E003
+Add, E004
+Remove, E005
+Search, E006
+Settings, E007
+Delete, E008
+Help, E009
+Warning, E00A
+Error, E00B
+Check, E00C
+RemoveTask, E00D
+Back, E00E
+Forward, E00F
+Info, E010
+Save, E011
+Export, E012
+Import, E013
+Lock, E014
+Unlock, E015
+Admin, E016
+Calendar, E017
+Filter, E018
+Folder, E019
+OpenFolder, E01A
+Print, E01B
+Email, E01C
+Star, E01D
+User, E01E
+UserGroup, E01F
+Approvals, E020
+Request, E021
+Sync, E022
+Download, E023
+Upload, E024
+Reports, E025
+Performance, E026
+Link, E027
+ExpandDown, E028
+CollapseUp, E029
+Popout, E02A
+Language, E02B
+Config, E02C
+Edit, E02D
+ContactInfo, E02E
+IdentityProvider, E02F
+Password, E030
+View, E031
+Location, E032
+Camera, E033
+Application, E034
+Database, E035
+Server, E036
+Asset, E037
+NetworkDevice, E038
+Network, E039
+AssetGroup, E03A
+Desktop, E03B
+Reviewer, E03C
+Policy, E03D
+Scope, E03E
+Account, E03F
+Profile, E040
+Role, E041
+Time, E042
+Copy, E043
+Library, E044
+Batch, E045
+ServiceAccount, E046
+Permissions, E047
+Close, E048
+SetDefault, E049
+Partition, E04A
+PasswordHistory, E04B
+CollapseBack, E04C
+CollapseForward, E04D
+ActivityCenter, E04E
+Attributes, E04F
+AccountGroup, E050
+Safeguard, E051
+Restore, E052
+PasswordWorkflow, E053
+PasswordCheck, E054
+PasswordReset, E055
+Manage, E056
+Ignore, E057
+Discovery, E058
+Run, E059
+Hide, E05A
+ClusterNode, E05B
+Clear, E05C
+Columns, E067
+PBotE,E068
+cBack,E069
+cForward,E06A
+OpenStarHalf,E06B
+Arrows,E06C
+OpenHeart,E06D
+ResizeHorizontal,E06E
+ResizeVertical,E06F
+ArrowsVertical,E070
+ArrowsHorizontal,E071
+Comments,E072
+HDD,E073
+Share,E074
+Compress,E075
+Sliders,E076
+Task,E077
+TaskComplete,E078
+Random,E079
+PieChart,E07A
+BoxX,E07B
+BoxCheck,E07C
+LineChart,E07D
+AreaChart,E07E
+ChevronUpDouble,E07F
+ChevronDownDouble,E080
+LevelUp,E081
+Cursor,E082
+MicrophoneMute,E083
+Microphone,E084
+Wrench,E085
+OpenBookmark,E086
+Bookmark,E087
+BackBar,E088
+OpenCheckbox,E089
+SignOut,E08A
+EditAlt,E08B
+Drop,E08C
+CircleHalf,E08D
+Image,E08E
+Record,E08F
+Indent,E090
+IndentInverse,E091
+Text,E092
+AlignRight,E093
+AlignCenter,E094
+AlignLeft,E095
+TagDouble,E096
+Tag,E097
+Volume3,E098
+Volume2,E099
+Volume1,E09A
+Volume0,E09B
+LockAlt,E09C
+ListAlt,E09D
+PlayCircle,E09E
+Inbox,E09F
+ArrowLeftCircle,E0A0
+ArrowDownCircle,E0A1
+ArrowRightCircle,E0A2
+ArrowUpCircle,E0A3
+DownloadAlt,E0A4
+WLAN,E0A5
+ZoomOut,E0A6
+ZoomIn,E0A7
+GridSmall,E0A8
+GridBig,E0A9
+Film,E0AA
+Music,E0AB
+Question,E0AC
+Asterisk,E0AD
+Flag,E0AE
+UserMD,E0AF
+Code,E0B0
+Bug,E0B1
+Key,E0B2
+CodeSplit,E0B3
+Clipboard,E0B4
+Megaphone,E0B5
+Book,E0B6
+Box,E0B7
+Anchor,E0B8
+Magic,E0B9
+OpenComment,E0BA
+Comment,E0BB
+Compass,E0BC
+Lightbulb,E0BD
+Mobile,E0BE
+Phone,E0BF
+Reorder,E0C0
+Undo,E0C1
+Sort,E0C2
+SortUp,E0C3
+SortDown,E0C4
+Terminal,E0C5
+OpenTrash,E0C6
+CrossSquare,E0C7
+ArrowUp,E0C8
+ArrowDown,E0C9
+Crosshair,E0CA
+CrossCircle,E0CB
+Rewind,E0CC
+FastForward,E0CD
+ToEnd,E0CE
+ToBeginning,E0CF
+Pause,E0D0
+Globe,E0D1
+Exchange,E0D2
+EllipsisHorizontal,E0D3
+EllipsisVertical,E0D4
+Circle,E0D5
+Ring,E0D6
+OpenCloud,E0D7
+BarChart,E0D8
+Battery4,E0D9
+Battery3,E0DA
+Battery2,E0DB
+Battery1,E0DC
+Battery0,E0DD
+ArrowLocation,E0DE
+StarHalf,E0DF
+OpenStar,E0E0
+OpenSquare,E0E1
+SignIn,E0E2
+UserRemove,E0E3
+UserSubtract,E0E4
+UserAdd,E0E5
+RSSSquare,E0E6
+RSS,E0E7
+OpenMail,E0E8
+ChevronDownSquare,E0E9
+ChevronLeftSquare,E0EA
+ChevronRightSquare,E0EB
+ChevronUpSquare,E0EC
+ChevronDownCircle,E0ED
+ChevronLeftCircle,E0EE
+ChevronRightCircle,E0EF
+ChevronUpCircle,E0F0
+ChevronDown,E0F1
+ChevronLeft,E0F2
+ChevronRight,E0F3
+ChevronUp,E0F4
+Android,E0F5
+Apple,E0F6
+Google,E0F7
+Linkedin,E0F8
+Facebook,E0F9
+Twitter,E0FA
+Bullseye,E0FB
+Cloud,E0FC
+Expand,E0FD
+HeartCrossout,E0FE
+Diagnose,E0FF
+FailOver,E100
+HealthCheck,E101
+SystemCheck,E102
+Unjoin,E103
+Reboot,E104
+Activate,E105
+DynamicAccountGroup,E106
+DynamicAssetGroup,E107
+Dynamic,E108
+Integrate,E109
+Isolate,E10A
+Hybrid,E10B
+SConnect,E10C

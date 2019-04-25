@@ -1,0 +1,40 @@
+﻿<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#+
+
+    public static class IconFontReader
+    {
+
+        const string ResourceName = "IconFont.csv";
+
+        public static IEnumerable<KeyValuePair<string, string>> Initialize(string path)
+        {
+            if (Icons == null)
+            {
+                var csvFile = string.Format("{0}/{1}", path, ResourceName);
+                var icons = new Dictionary<string, string>();
+                using (var stream = new StreamReader(File.OpenRead(csvFile)))
+                {
+                    while (stream.Peek() != -1)
+                    {
+                        var line = stream.ReadLine();
+                        if (string.IsNullOrEmpty(line)) continue;
+
+                        var item = line.Split(',');
+                        if (item.Length < 2 || string.IsNullOrEmpty(item[0]) || string.IsNullOrEmpty(item[1])) continue;
+
+                        icons.Add(item[0].Trim(), item[1].Trim());
+                    }
+                }
+                Icons = icons;
+            }
+            return Icons;
+        }
+
+        public static IEnumerable<KeyValuePair<string, string>> Icons { get; private set; }
+
+    }
+
+#>

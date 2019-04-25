@@ -12,7 +12,7 @@ namespace Safeguard.Test.Ui
         {
             InitializeComponent();
 
-            SafeguardForm.DataContext = new AddinViewModel();
+            SafeguardForm.DataContext = new AddinViewModel(new SafeguardTestImpl(), new ExcelTestImpl());
         }
     }
 }

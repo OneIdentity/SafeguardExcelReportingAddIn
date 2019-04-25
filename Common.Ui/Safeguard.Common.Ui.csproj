@@ -72,19 +72,52 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddinViewModel.cs" />
+    <Compile Include="Busy.cs" />
+    <Compile Include="BusyIndicator.cs" />
+    <Compile Include="Fonts\IconFont.cs" />
+    <Compile Include="Fonts\IconFont.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IconFont.tt</DependentUpon>
+    </Compile>
     <Compile Include="SafeguardForm.xaml.cs">
       <DependentUpon>SafeguardForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ResourceDictionaries\ControlStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SafeguardForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResourceDictionaries\SafeguardResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fonts\Cadence.otf" />
+    <None Include="Fonts\IconFontCommon.ttinclude" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Safeguard.Common.csproj">
+      <Project>{B935041D-4951-4795-A211-000E7EEBD431}</Project>
+      <Name>Safeguard.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\IconFont.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IconFont.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

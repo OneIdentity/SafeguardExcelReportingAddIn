@@ -18,7 +18,7 @@ namespace Safeguard.Common
 
     public interface ISafeguard
     {
-        Task Authenticate();
+        Task Authenticate(string appliance);
         Task Logout();
 
         Task<IEnumerable<ISafeguardReport>> GetReports();
