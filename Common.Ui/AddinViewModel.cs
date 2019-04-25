@@ -1,31 +1,41 @@
 ﻿using System;
+using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
+using System.Security.Cryptography.X509Certificates;
 using DynamicData;
+using DynamicData.Binding;
 using ReactiveUI;
 
-namespace SafeguardAddin
+namespace Safeguard.Common.Ui
 {
 
     public class AddinViewModel : ReactiveObject
     {
+        private readonly SourceList<Report> _reports = new SourceList<Report>();
 
         public AddinViewModel()
         {
-            var authenticate =
-                ReactiveCommand.Create(DoAuthenticate, this.WhenAny(x => x.IsAuthenticated, x => !x.Value));
+            var authenticate = ReactiveCommand.Create(DoAuthenticate, 
+                this.WhenAnyValue(x => x.IsAuthenticated).Select(x=>!x));
             AuthenticateCommand = authenticate;
 
-            var logout = ReactiveCommand.Create(DoLogout, this.WhenAnyValue(x => x.IsAuthenticated));
+            var logout = ReactiveCommand.Create(DoLogout, 
+                this.WhenAnyValue(x => x.IsAuthenticated));
             LogoutCommand = logout;
 
-            var obs = Reports.Connect();
-            Reports.Edit(inner =>
+            _reports.Connect()
+                .Bind(Reports)
+                .Subscribe();
+
+            _reports.Edit(inner =>
             {
                 inner.Add(new Report {Name = "User Entitlements"});
                 inner.Add(new Report {Name = "Yesterday's Access Requests"});
                 inner.Add(new Report {Name = "Some BullCrap"});
                 inner.Add(new Report {Name = "Dan's stuff"});
             });
+            SelectedReport = Reports.First();
         }
 
         public IReactiveCommand AuthenticateCommand { get; }
@@ -52,12 +62,8 @@ namespace SafeguardAddin
             IsAuthenticated = false;
         }
 
-        private DynamicData.SourceList<Report> _reports = new SourceList<Report>();
-        public DynamicData.SourceList<Report> Reports
-        {
-            get => _reports; 
-            set => this.RaiseAndSetIfChanged(ref _reports, value); 
-        }
+        
+        public IObservableCollection<Report> Reports { get; } = new ObservableCollectionExtended<Report>();
 
         private Report _selectedReport = default(Report);
         public Report SelectedReport
@@ -65,6 +71,8 @@ namespace SafeguardAddin
             get => _selectedReport; 
             set => this.RaiseAndSetIfChanged(ref _selectedReport, value); 
         }
+
+
 
     }
 

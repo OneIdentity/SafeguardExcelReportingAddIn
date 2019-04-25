@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 #pragma warning disable 414
-namespace SafeguardAddin {
+namespace Safeguard.ExcelAddin {
     
     
     /// 
@@ -180,13 +180,13 @@ namespace SafeguardAddin {
         private Globals() {
         }
         
-        private static ThisAddIn _ThisAddIn;
+        private static Safeguard.ExcelAddin.ThisAddIn _ThisAddIn;
         
         private static global::Microsoft.Office.Tools.Excel.ApplicationFactory _factory;
         
         private static ThisRibbonCollection _ThisRibbonCollection;
         
-        internal static ThisAddIn ThisAddIn {
+        internal static Safeguard.ExcelAddin.ThisAddIn ThisAddIn {
             get {
                 return _ThisAddIn;
             }

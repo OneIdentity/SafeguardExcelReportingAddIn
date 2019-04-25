@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.Office.Interop.Excel;
 
-namespace SafeguardAddin
+namespace Safeguard.Common
 {
     public interface IExcel
     {

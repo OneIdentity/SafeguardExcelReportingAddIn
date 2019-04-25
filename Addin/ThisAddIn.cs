@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
-using Excel = Microsoft.Office.Interop.Excel;
-using Office = Microsoft.Office.Core;
-using Microsoft.Office.Tools.Excel;
+using Safeguard.Common.Ui;
+using SafeguardAddin;
 
-namespace SafeguardAddin
+namespace Safeguard.ExcelAddin
 {
     public partial class ThisAddIn
     {
-        private WpfHost contentHost = new WpfHost();
+        private readonly WpfHost _contentHost = new WpfHost();
 
-        private void ThisAddIn_Startup(object sender, System.EventArgs e)
+        private void ThisAddIn_Startup(object sender, EventArgs e)
         {
-            contentHost.WpfElementHost.Child = new SafeguardForm(){DataContext = new AddinViewModel()};
+            _contentHost.WpfElementHost.Child = new SafeguardForm
+            {
+                DataContext = new AddinViewModel()
+            };
 
-            var taskPane = CustomTaskPanes.Add(contentHost, "Safeguard");
+            var taskPane = CustomTaskPanes.Add(_contentHost, "Safeguard");
             taskPane.Visible = true;
 
         }
