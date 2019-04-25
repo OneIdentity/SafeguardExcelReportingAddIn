@@ -74,7 +74,6 @@ namespace Safeguard.Common.Ui
         {
             using(this.SetBusy())
             {
-                // TODO: Passin the network address
                 await Safeguard.Authenticate(NetworkAddress);
                 IsAuthenticated = true;
             }
@@ -120,8 +119,6 @@ namespace Safeguard.Common.Ui
             get => _networkAddress; 
             set => this.RaiseAndSetIfChanged(ref _networkAddress, value); 
         }
-
-
     }
 
     public class Report : ReactiveObject

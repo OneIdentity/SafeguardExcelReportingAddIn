@@ -18,36 +18,38 @@
     </UserControl.Resources>
     <Grid>
         <Grid Visibility="{Binding IsAuthenticated, Converter={StaticResource ToInverseVisibilityConverter}}" Background="{StaticResource PangaeaBlueBrush}">
-            <StackPanel Margin="5" >
+            <StackPanel Margin="10,0">
                 <Rectangle FlowDirection="LeftToRight" Fill="{StaticResource SafeguardLogo}" HorizontalAlignment="Center" Height="159" VerticalAlignment="Top" Width="159" />
 
-                <TextBlock HorizontalAlignment="Center" Style="{StaticResource PangaeaWhite11AlignLeftText}" FontSize="16" Margin="0,10">Reporting</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Style="{StaticResource PangaeaWhite11AlignLeftText}" FontSize="16" Margin="0,10">One Identity Safeguard</TextBlock>
 
-                <TextBlock Style="{StaticResource PangaeaWhite11AlignLeftText}" Margin="0,5">Appliance Network Address:</TextBlock>
-                <TextBox Padding="3" Text="{Binding NetworkAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button Margin="0,5" Command="{Binding AuthenticateCommand}" 
-                        HorizontalAlignment="Right" IsDefault="True" Content="Connect"/>
+                <TextBlock Style="{StaticResource PangaeaWhite11AlignLeftText}" Margin="0,5">Appliance</TextBlock>
+                <TextBox Padding="3,3,3,5" Text="{Binding NetworkAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Margin="0,10" Command="{Binding AuthenticateCommand}" 
+                        HorizontalAlignment="Left" IsDefault="True" Content="Connect"/>
             </StackPanel>
         </Grid>
 
-        <Grid Margin="5" Visibility="{Binding IsAuthenticated, Converter={StaticResource ToVisibilityConverter}}">
+        <Grid Visibility="{Binding IsAuthenticated, Converter={StaticResource ToVisibilityConverter}}" Background="{StaticResource PangaeaLightGrayBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackPanel >
+            <StackPanel Margin="10,0">
                 <TextBlock Style="{StaticResource PangaeaWhite11AlignLeftText}" Foreground="{StaticResource PangaeaAlertingGrayBrush}">Select a report</TextBlock>
-                <ComboBox ItemsSource="{Binding Reports}" SelectedItem="{Binding SelectedReport}">
+                <ComboBox ItemsSource="{Binding Reports}" SelectedItem="{Binding SelectedReport}" Margin="0,0,0,10">
                     <ComboBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type ui:Report}">
                             <TextBlock Text="{Binding Name}"></TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <Button Command="{Binding ExecuteReportCommand}" Margin="0,10" Style="{StaticResource PrimaryDialogButtonStyle}" HorizontalAlignment="Right">Run Report</Button>
+                <Button Command="{Binding ExecuteReportCommand}" Margin="0" Style="{StaticResource PrimaryDialogButtonStyle}" HorizontalAlignment="Left">Run Report</Button>
+                <TextBlock Margin="0,10,0,5" Foreground="{StaticResource PangaeaAlertingGrayBrush}">Description</TextBlock>
+                <TextBlock Text="{Binding SelectedReport.Description}" TextWrapping="Wrap"></TextBlock>
             </StackPanel>
-            <Button Grid.Row="2" Command="{Binding LogoutCommand}" Margin="0,10,0,0" HorizontalAlignment="Right">Disconnect</Button>
+            <Button Grid.Row="2" Command="{Binding LogoutCommand}" HorizontalAlignment="Center" Margin="10">Disconnect</Button>
         </Grid>
         
         <Grid Visibility="{Binding IsBusy, Converter={StaticResource ToVisibilityConverter}}" Background="{StaticResource PangaeaWhiteBrush}">
