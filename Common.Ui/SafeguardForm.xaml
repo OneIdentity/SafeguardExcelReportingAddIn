@@ -9,27 +9,51 @@
              d:DataContext="{d:DesignInstance ui:AddinViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <ui:ToVisibilityConverter x:Key="ToVisibilityConverter"/>
-        <ui:ToVisibilityConverterInverse x:Key="ToVisibilityConverterInverse"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionaries\SafeguardResources.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries\ControlStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <StackPanel Margin="5" Visibility="{Binding IsAuthenticated, Converter={StaticResource ToVisibilityConverterInverse}}">
-            <TextBlock TextWrapping="Wrap">Log in to Safeguard in order to do some stuff.</TextBlock>
-            <Button Command="{Binding AuthenticateCommand}">Login</Button>
-        </StackPanel>
+        <Grid Visibility="{Binding IsAuthenticated, Converter={StaticResource ToInverseVisibilityConverter}}" Background="{StaticResource PangaeaBlueBrush}">
+            <StackPanel Margin="5" >
+                <Rectangle FlowDirection="LeftToRight" Fill="{StaticResource SafeguardLogo}" HorizontalAlignment="Center" Height="159" VerticalAlignment="Top" Width="159" />
+
+                <TextBlock HorizontalAlignment="Center" Style="{StaticResource PangaeaWhite11AlignLeftText}" FontSize="16" Margin="0,10">Reporting</TextBlock>
+
+                <TextBlock Style="{StaticResource PangaeaWhite11AlignLeftText}" Margin="0,5">Appliance Network Address:</TextBlock>
+                <TextBox Padding="3" Text="{Binding NetworkAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Margin="0,5" Command="{Binding AuthenticateCommand}" 
+                        HorizontalAlignment="Right" IsDefault="True" Content="Connect"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Margin="5" Visibility="{Binding IsAuthenticated, Converter={StaticResource ToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel >
+                <TextBlock Style="{StaticResource PangaeaWhite11AlignLeftText}" Foreground="{StaticResource PangaeaAlertingGrayBrush}">Select a report</TextBlock>
+                <ComboBox ItemsSource="{Binding Reports}" SelectedItem="{Binding SelectedReport}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type ui:Report}">
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Command="{Binding ExecuteReportCommand}" Margin="0,10" Style="{StaticResource PrimaryDialogButtonStyle}" HorizontalAlignment="Right">Run Report</Button>
+            </StackPanel>
+            <Button Grid.Row="2" Command="{Binding LogoutCommand}" Margin="0,10,0,0" HorizontalAlignment="Right">Disconnect</Button>
+        </Grid>
         
-        <StackPanel Margin="5" Visibility="{Binding IsAuthenticated, Converter={StaticResource ToVisibilityConverter}}">
-            <TextBlock TextWrapping="Wrap">Okay, you are logged in now. Run a report...</TextBlock>
-            <ComboBox ItemsSource="{Binding Reports}" SelectedItem="{Binding SelectedReport}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type ui:Report}">
-                        <TextBlock Text="{Binding Name}"></TextBlock>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <Button>Execute</Button>
-            
-            <Button Command="{Binding LogoutCommand}" Margin="0,10,0,0">Logout</Button>
-        </StackPanel>
+        <Grid Visibility="{Binding IsBusy, Converter={StaticResource ToVisibilityConverter}}" Background="{StaticResource PangaeaWhiteBrush}">
+            <ui:BusyIndicator IsBusy="True" Style="{StaticResource LargeBusyIndicator}">
+
+            </ui:BusyIndicator>
+        </Grid>
     </Grid>
 </UserControl>

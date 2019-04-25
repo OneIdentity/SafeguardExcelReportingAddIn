@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SafeguardTestImpl.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,6 +126,10 @@
     <ProjectReference Include="..\Common.Ui\Safeguard.Common.Ui.csproj">
       <Project>{ce609869-7885-41c9-ac1d-b66ab0a983d9}</Project>
       <Name>Safeguard.Common.Ui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Safeguard.Common.csproj">
+      <Project>{B935041D-4951-4795-A211-000E7EEBD431}</Project>
+      <Name>Safeguard.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

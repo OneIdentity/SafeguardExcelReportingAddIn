@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
@@ -10,36 +12,56 @@ using ReactiveUI;
 namespace Safeguard.Common.Ui
 {
 
-    public class AddinViewModel : ReactiveObject
+    public class AddinViewModel : ReactiveObject, ICanBeBusy
     {
         private readonly SourceList<Report> _reports = new SourceList<Report>();
 
-        public AddinViewModel()
+        private ISafeguard Safeguard { get; }
+        private IExcel Excel { get; }
+
+        public AddinViewModel(ISafeguard safeguard, IExcel excel)
         {
-            var authenticate = ReactiveCommand.Create(DoAuthenticate, 
-                this.WhenAnyValue(x => x.IsAuthenticated).Select(x=>!x));
+            Safeguard = safeguard;
+            Excel = excel;
+
+            var canAuthenticate = this.WhenNotBusyAnd(
+                this.WhenAnyValue(x => x.IsAuthenticated, x=>x.NetworkAddress)
+                    .Select(x => !x.Item1 && !string.IsNullOrEmpty(x.Item2)));
+            var authenticate = ReactiveCommand.Create(DoAuthenticate, canAuthenticate);
             AuthenticateCommand = authenticate;
 
-            var logout = ReactiveCommand.Create(DoLogout, 
-                this.WhenAnyValue(x => x.IsAuthenticated));
+            var canLogout = this.WhenNotBusyAnd(this.WhenAnyValue(x => x.IsAuthenticated));
+            var logout = ReactiveCommand.Create(DoLogout, canLogout);
             LogoutCommand = logout;
+
+            var canExecuteReport = this.WhenNotBusyAnd(this.WhenAnyValue(x => x.SelectedReport).Select(x => x != null));
+            var execute = ReactiveCommand.CreateFromTask(DoExecute, canExecuteReport);
+            ExecuteReportCommand = execute;
 
             _reports.Connect()
                 .Bind(Reports)
                 .Subscribe();
 
-            _reports.Edit(inner =>
+            safeguard.GetReports().ContinueWith(task =>
             {
-                inner.Add(new Report {Name = "User Entitlements"});
-                inner.Add(new Report {Name = "Yesterday's Access Requests"});
-                inner.Add(new Report {Name = "Some BullCrap"});
-                inner.Add(new Report {Name = "Dan's stuff"});
+                if (task.IsCompleted)
+                {
+                    _reports.Edit(inner =>
+                    {
+                        foreach (var report in task.Result)
+                        {
+                            inner.Add(new Report(report));
+                        }
+                    });
+                }
+
+                SelectedReport = Reports.First();
             });
-            SelectedReport = Reports.First();
         }
 
         public IReactiveCommand AuthenticateCommand { get; }
         public IReactiveCommand LogoutCommand { get; }
+        public IReactiveCommand ExecuteReportCommand { get; }
 
         private bool _isAuthenticated = default(bool);
         public bool IsAuthenticated
@@ -48,21 +70,34 @@ namespace Safeguard.Common.Ui
             set => this.RaiseAndSetIfChanged(ref _isAuthenticated, value);
         }
 
-        private void DoAuthenticate()
+        private async Task DoAuthenticate()
         {
-            // Whatever we need to do here
-
-            IsAuthenticated = true;
+            using(this.SetBusy())
+            {
+                // TODO: Passin the network address
+                await Safeguard.Authenticate(NetworkAddress);
+                IsAuthenticated = true;
+            }
         }
 
-        private void DoLogout()
+        private async Task DoLogout()
         {
-            // Whatever we need to do here
-
-            IsAuthenticated = false;
+            using (this.SetBusy())
+            {
+                await Safeguard.Logout();
+                IsAuthenticated = false;
+            }
         }
 
-        
+        private async Task DoExecute()
+        {
+            if (SelectedReport == null) return;
+            using (this.SetBusy())
+            {
+                await SelectedReport.Execute(Excel);
+            }
+        }
+
         public IObservableCollection<Report> Reports { get; } = new ObservableCollectionExtended<Report>();
 
         private Report _selectedReport = default(Report);
@@ -72,17 +107,52 @@ namespace Safeguard.Common.Ui
             set => this.RaiseAndSetIfChanged(ref _selectedReport, value); 
         }
 
+        private bool _isBusy = default(bool);
+        public bool IsBusy
+        {
+            get => _isBusy; 
+            set => this.RaiseAndSetIfChanged(ref _isBusy, value); 
+        }
+
+        private string _networkAddress = default(string);
+        public string NetworkAddress
+        {
+            get => _networkAddress; 
+            set => this.RaiseAndSetIfChanged(ref _networkAddress, value); 
+        }
 
 
     }
 
     public class Report : ReactiveObject
     {
+
+        private readonly ISafeguardReport _report;
+
+        public Report(ISafeguardReport report)
+        {
+            _report = report;
+            Name = _report.Name;
+            Description = _report.Description;
+        }
+
         private string _name = default(string);
         public string Name
         {
             get => _name; 
             set => this.RaiseAndSetIfChanged(ref _name, value); 
+        }
+
+        private string _description = default(string);
+        public string Description
+        {
+            get => _description; 
+            set => this.RaiseAndSetIfChanged(ref _description, value); 
+        }
+
+        public async Task Execute(IExcel excel)
+        {
+            await _report.Execute(excel);
         }
     }
 }
