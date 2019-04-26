@@ -1,4 +1,5 @@
 ﻿using System;
+using Safeguard.Common;
 using Safeguard.Common.Ui;
 using Safeguard.Test.Ui;
 using SafeguardAddin;
@@ -14,7 +15,7 @@ namespace Safeguard.ExcelAddin
             _contentHost.WpfElementHost.Child = new SafeguardForm
             {
                 // TODO: Create interface instances
-                DataContext = new AddinViewModel(new SafeguardTestImpl(), new ExcelTestImpl())
+                DataContext = new AddinViewModel(new SafeguardHandle(), new ExcelTestImpl())
             };
 
             var taskPane = CustomTaskPanes.Add(_contentHost, "Safeguard");

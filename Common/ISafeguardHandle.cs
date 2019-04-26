@@ -16,7 +16,7 @@ namespace Safeguard.Common
         Task Execute(IExcel excel);
     }
 
-    public interface ISafeguard
+    public interface ISafeguardHandle
     {
         Task Authenticate(string appliance);
         Task Logout();
