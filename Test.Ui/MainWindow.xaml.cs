@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Safeguard.Common;
 using Safeguard.Common.Ui;
 
 namespace Safeguard.Test.Ui
@@ -12,7 +13,7 @@ namespace Safeguard.Test.Ui
         {
             InitializeComponent();
 
-            SafeguardForm.DataContext = new AddinViewModel(new SafeguardTestImpl(), new ExcelTestImpl());
+            SafeguardForm.DataContext = new AddinViewModel(new SafeguardHandle(), new ExcelTestImpl());
         }
     }
 }

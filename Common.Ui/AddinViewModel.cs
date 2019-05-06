@@ -16,10 +16,10 @@ namespace Safeguard.Common.Ui
     {
         private readonly SourceList<Report> _reports = new SourceList<Report>();
 
-        private ISafeguard Safeguard { get; }
+        private ISafeguardHandle Safeguard { get; }
         private IExcel Excel { get; }
 
-        public AddinViewModel(ISafeguard safeguard, IExcel excel)
+        public AddinViewModel(ISafeguardHandle safeguard, IExcel excel)
         {
             Safeguard = safeguard;
             Excel = excel;
